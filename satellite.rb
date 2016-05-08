@@ -1,5 +1,5 @@
 require './polar_coordinate'
-EARTH_RADIUS = 6371
+EARTH_RADIUS = 6371.0
 
 class Satellite < PolarCoordinate
   def initialize(id, latitude, longitude, altitude)
@@ -22,7 +22,7 @@ class Satellite < PolarCoordinate
   def to_s
     result = ""
     result << "Id: #{@id} "
-    result << "Coordinates: #{@latitude}, #{@longitude}, #{@r - EARTH_RADIUS} "
+    result << "Coordinates: #{@latitude.round(3)}, #{@longitude.round(3)}, #{(@r - EARTH_RADIUS).round(3)} "
     result << "Visibles: "
     @visible_satellites.map {|s| result << "#{s.id} "}
     result
